@@ -68,7 +68,7 @@ angular.module('starter.controllers', [])
   };
 
   $scope.checkFile = function (){
-  	alert(window.plugin.getFreeDiskSpace());
+  	alert(window.plugins.getFreeDiskSpace());
   };
 
   $scope.saveData = function(v) {
