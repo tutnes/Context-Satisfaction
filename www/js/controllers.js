@@ -56,11 +56,11 @@ angular.module('starter.controllers', [])
 .controller('HappyRate', function($scope) {
   
   $scope.checkCalendar = function (){
-	  var startDate = new Date(2015,2,15,18,30,0,0,0); // beware: month 0 = january, 11 = december
-	  var endDate = new Date(2015,2,15,19,30,0,0,0);
-	  var title = "My nice event";
-	  var eventLocation = "Home";
-	  var notes = "Some notes about this event.";
+	  var startDate = new Date(2016,0,22,00,00,0,0,0); // beware: month 0 = january, 11 = december
+	  var endDate = new Date(2016,0,22,23,59,0,0,0);
+	  var title = "";
+	  var eventLocation = "";
+	  var notes = "";
 	  var success = function(message) { alert("Success: " + JSON.stringify(message)); };
 	  var error = function(message) { alert("Error: " + message); };
 
@@ -68,7 +68,7 @@ angular.module('starter.controllers', [])
   };
 
   $scope.checkFile = function (){
-  	alert(window.plugins.getFreeDiskSpace());
+  	alert(window.plugins.file.getFreeDiskSpace());
   };
 
   $scope.saveData = function(v) {
