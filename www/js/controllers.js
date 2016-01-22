@@ -54,23 +54,25 @@ angular.module('starter.controllers', [])
 })
 
 .controller('HappyRate', function($scope) {
+  
   $scope.saveData = function(v) {
-  	window.localStorage.setItem("data",v);
+  	
+  	
+  	navigator.geolocation.getCurrentPosition(
+      function(position) {
+          window.localStorage.setItem("data", position.coords.latitude + ',' + position.coords.longitude);
+      },
+      function() {
+          window.localStorage.setItem("data", 'Error getting location');
+      });
+  	window.localStorage.setItem("data",'Score: ' + v + '\nLocation: ' + window.localStorage.getItem("data"));
+  //console.log(temp, v);
   };
 
   $scope.loadData = function() {
   	alert(window.localStorage.getItem("data"));
   }
-  $scope.saveLoc = function() {
-  	  	navigator.geolocation.getCurrentPosition(
-      function(position) {
-          window.localStorage.setItem("data",position.coords.latitude + ',' + position.coords.longitude);
-      },
-      function() {
-          alert('Error getting location');
-      });
-
-  }
+  
 })
 
 
