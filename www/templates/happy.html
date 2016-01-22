@@ -1,20 +1,28 @@
 <ion-view view-title="Happy">
-  <ion-content>
+  <ion-content ng-controller="HappyRate">
     <h1>How happy are you now?</h1>
     <div>
-    <button class="button button-large button-positive">1</button>
-    <button class="button button-large button-positive">2</button>
-    <button class="button button-large button-positive">3</button>
+    <button class="button button-large button-positive" ng-click="saveData(1)">1</button>
+    <button class="button button-large button-positive" ng-click="saveData(2)">2</button>
+    <button class="button button-large button-positive" ng-click="saveData(3)">3</button>
     </div><div>
-    <button class="button button-large button-positive">4</button>
-    <button class="button button-large button-positive">5</button>
+    <button class="button button-large button-positive" ng-click="saveData(4)">4</button>
+    <button class="button button-large button-positive" ng-click="saveData(5)">5</button>
     
-    <button class="button button-large button-positive">6</button>
+    <button class="button button-large button-positive" ng-click="saveData(6)">6</button>
     </div><div>
-    <button class="button button-large button-positive">7</button>
-    <button class="button button-large button-positive">8</button>
-    <button class="button button-large button-positive">9</button>
-    </div><div>
-    <button class="button button-large button-positive">10</button>
+    <button class="button button-large button-positive" ng-click="saveData(7)">7</button>
+    <button class="button button-large button-positive" ng-click="saveData(8)">8</button>
+    <button class="button button-large button-positive" ng-click="saveData(9)">9</button>
+    </div>
+    <div>
+    <button class="button button-large button-positive" ng-click="saveData(10)">10</button>
+    </div>
+    <div>
+    <button class="button button-large button-positive" ng-click="loadData()">Load recent data</button>
+    <button class="button button-large button-positive" ng-click="saveLoc()">Save location</button>
+    </div>
+    <div>
+      </div>
   </ion-content>
 </ion-view>

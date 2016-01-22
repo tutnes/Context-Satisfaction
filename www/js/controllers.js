@@ -1,3 +1,4 @@
+
 angular.module('starter.controllers', [])
 
 .controller('AppCtrl', function($scope, $ionicModal, $timeout) {
@@ -53,11 +54,25 @@ angular.module('starter.controllers', [])
 })
 
 .controller('HappyRate', function($scope) {
-  $scope.saveData = function ("data",v) {
-  	
+  $scope.saveData = function(v) {
+  	window.localStorage.setItem("data",v);
+  };
+
+  $scope.loadData = function() {
+  	alert(window.localStorage.getItem("data"));
   }
-  
+  $scope.saveLoc = function() {
+  	  	navigator.geolocation.getCurrentPosition(
+      function(position) {
+          window.localStorage.setItem("data",position.coords.latitude + ',' + position.coords.longitude);
+      },
+      function() {
+          alert('Error getting location');
+      });
+
+  }
 })
+
 
 
 
