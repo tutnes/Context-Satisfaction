@@ -50,6 +50,15 @@ angular.module('starter', ['ionic', 'starter.controllers'])
         }
       }
     })
+    .state('app.happy', {
+      url: '/happy',
+      views: {
+        'menuContent': {
+          templateUrl: 'templates/happy.html'
+        }
+      }
+    })
+
     .state('app.playlists', {
       url: '/playlists',
       views: {

@@ -52,5 +52,14 @@ angular.module('starter.controllers', [])
   ];
 })
 
+.controller('HappyRate', function($scope) {
+  $scope.saveData = function ("data",v) {
+  	
+  }
+  
+})
+
+
+
 .controller('PlaylistCtrl', function($scope, $stateParams) {
 });
