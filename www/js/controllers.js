@@ -55,6 +55,22 @@ angular.module('starter.controllers', [])
 
 .controller('HappyRate', function($scope) {
   
+  $scope.checkCalendar = function (){
+	  var startDate = new Date(2015,2,15,18,30,0,0,0); // beware: month 0 = january, 11 = december
+	  var endDate = new Date(2015,2,15,19,30,0,0,0);
+	  var title = "My nice event";
+	  var eventLocation = "Home";
+	  var notes = "Some notes about this event.";
+	  var success = function(message) { alert("Success: " + JSON.stringify(message)); };
+	  var error = function(message) { alert("Error: " + message); };
+
+  	alert(window.plugins.calendar.findEvent(title,eventLocation,notes,startDate,endDate,success,error));
+  };
+
+  $scope.checkFile = function (){
+  	alert(window.plugin.getFreeDiskSpace());
+  };
+
   $scope.saveData = function(v) {
   	
   	
@@ -65,13 +81,13 @@ angular.module('starter.controllers', [])
       function() {
           window.localStorage.setItem("data", 'Error getting location');
       });
-  	window.localStorage.setItem("data",'Score: ' + v + '\nLocation: ' + window.localStorage.getItem("data"));
+  	window.localStorage.setItem("data",'Score: ' + v + ' Location: ' + window.localStorage.getItem("data"));
   //console.log(temp, v);
   };
 
   $scope.loadData = function() {
   	alert(window.localStorage.getItem("data"));
-  }
+  };
   
 })
 
