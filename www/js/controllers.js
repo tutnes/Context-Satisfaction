@@ -19,9 +19,9 @@ angular.module('starter.controllers', [])
   $scope.checkFile = function (){
 	$cordovaFile.getFreeDiskSpace()
 	.then(function (success) {
-		console.log(success);
+		alert(success);
 	},function (error) {
-		console.log(error);
+		alert(error);
 	});
 	
   };
@@ -33,9 +33,9 @@ angular.module('starter.controllers', [])
   	.then(function (position){
   		var lat = position.coords.latitude;
   		var long = position.coords.longitde;
-  		console.log(position);
+  		alert('Lat: ' + lat + ' Long: ' + long);
   	},function (err){
-  		console.log('Error:' + err);
+  		alert('Error:' + err);
   	})
   	
   
