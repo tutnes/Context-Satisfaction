@@ -1,59 +1,6 @@
-
 angular.module('starter.controllers', [])
 
-.controller('AppCtrl', function($scope, $ionicModal, $timeout) {
-
-  // With the new view caching in Ionic, Controllers are only called
-  // when they are recreated or on app start, instead of every page change.
-  // To listen for when this page is active (for example, to refresh data),
-  // listen for the $ionicView.enter event:
-  //$scope.$on('$ionicView.enter', function(e) {
-  //});
-
-  // Form data for the login modal
-  $scope.loginData = {};
-
-  // Create the login modal that we will use later
-  $ionicModal.fromTemplateUrl('templates/login.html', {
-    scope: $scope
-  }).then(function(modal) {
-    $scope.modal = modal;
-  });
-
-  // Triggered in the login modal to close it
-  $scope.closeLogin = function() {
-    $scope.modal.hide();
-  };
-
-  // Open the login modal
-  $scope.login = function() {
-    $scope.modal.show();
-  };
-
-  // Perform the login action when the user submits the login form
-  $scope.doLogin = function() {
-    console.log('Doing login', $scope.loginData);
-
-    // Simulate a login delay. Remove this and replace with your login
-    // code if using a login system
-    $timeout(function() {
-      $scope.closeLogin();
-    }, 1000);
-  };
-})
-
-.controller('PlaylistsCtrl', function($scope) {
-  $scope.playlists = [
-    { title: 'Reggae', id: 1 },
-    { title: 'Chill', id: 2 },
-    { title: 'Dubstep', id: 3 },
-    { title: 'Indie', id: 4 },
-    { title: 'Rap', id: 5 },
-    { title: 'Cowbell', id: 6 }
-  ];
-})
-
-.controller('HappyRate', function($scope) {
+.controller('HappyRate', function($scope, $cordovaFile) {
   
   $scope.checkCalendar = function (){
 	  
@@ -65,12 +12,18 @@ angular.module('starter.controllers', [])
 	  var notes = "";
 	  var success = function(message) { alert("Success: " + JSON.stringify(message)); };
 	  var error = function(message) { alert("Error: " + message); };
-	 // alert(startDate + endDate);
+	 
   	alert(window.plugins.calendar.findEvent(title,eventLocation,notes,startDate,endDate,success,error));
   };
 
+$scope.getLoc = function () {
+
+
+}
+
   $scope.checkFile = function (){
-  	alert(window.plugins.file.getFreeDiskSpace());
+	alert("balle");
+  	alert(getFreeDiskSpace());
   };
 
   $scope.saveData = function(v) {
@@ -93,8 +46,60 @@ angular.module('starter.controllers', [])
   
 })
 
-
-
-
-.controller('PlaylistCtrl', function($scope, $stateParams) {
+.controller('FileCtrl', function($scope, $cordovaFile) {
+  document.addEventListener('deviceready', function () {
+    $cordovaFile.getFreeDiskSpace()
+      .then(function (success) {
+         alert("Balle");
+         alert(sucess);
+      }, function (error) {
+          alert("balle");
+      });
+    // CHECK
+    $cordovaFile.checkDir(cordova.file.dataDirectory, "dir/other_dir")
+      .then(function (success) {
+        // success
+      }, function (error) {
+        // error
+      });
+    $cordovaFile.checkFile(cordova.file.dataDirectory, "some_file.txt")
+      .then(function (success) {
+        // success
+      }, function (error) {
+        // error
+      });
+    // CREATE
+    $cordovaFile.createDir(cordova.file.dataDirectory, "new_dir", false)
+      .then(function (success) {
+        // success
+      }, function (error) {
+        // error
+      });
+    $cordovaFile.createFile(cordova.file.dataDirectory, "new_file.txt", true)
+      .then(function (success) {
+        // success
+      }, function (error) {
+        // error
+      });
+    // WRITE
+    $cordovaFile.writeFile(cordova.file.dataDirectory, "file.txt", "text", true)
+      .then(function (success) {
+        // success
+      }, function (error) {
+        // error
+      });
+    $cordovaFile.writeExistingFile(cordova.file.dataDirectory, "file.txt", "text")
+      .then(function (success) {
+        // success
+      }, function (error) {
+        // error
+      });
+    // READ
+    $cordovaFile.readAsText(cordova.file.dataDirectory, $scope.inputs.readFile)
+      .then(function (success) {
+        // success
+      }, function (error) {
+        // error
+      });
+  });
 });
